@@ -26,6 +26,7 @@ Route::get('/getTypes','AccountTypeController@getTypes');
 
 // 統計
 Route::get('/statistics','StatisticsController@show');
+Route::get('/getAllData','StatisticsController@getAllData');
 
 Auth::routes();
 
