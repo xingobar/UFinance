@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// 交易紀錄
 Route::get('/transaction','FinanceController@showTransaction');
 Route::post('/addTransaction','FinanceController@create');
 
+// 交易類型
 Route::get('/type','AccountTypeController@show');
 Route::post('/addAccountType','AccountTypeController@create');
 
