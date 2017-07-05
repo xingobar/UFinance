@@ -13,7 +13,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     @yield('static')
 </head>
 <body>
@@ -39,6 +38,7 @@
                         <li class="active"><a href="/home">UFinance</a></li>
                         <li><a href="transaction">新增交易紀錄</a></li>
                         <li><a href="type" >新增類型</a></li>
+                        <li><a href="statistics">統計</a></li>
                     </ul>
 
                 </div>

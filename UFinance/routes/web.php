@@ -24,6 +24,9 @@ Route::get('/type','AccountTypeController@show');
 Route::post('/addAccountType','AccountTypeController@create');
 Route::get('/getTypes','AccountTypeController@getTypes');
 
+// 統計
+Route::get('/statistics','StatisticsController@show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\AccountType;
 
 class AccountType extends Model
 {

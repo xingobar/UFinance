@@ -18,9 +18,9 @@
                         <table class="table table-striped">
                             <thead>
                                     <tr>
-                                        <th>交易名稱</th>
-                                        <th>交易類型</th>
-                                        <th>交易金額</th>
+                                        <th>名稱</th>
+                                        <th>類型</th>
+                                        <th>金額</th>
                                     </tr>
                                 </thead>
                             <tbody>
@@ -39,7 +39,9 @@
                         </table>
                         <div class="row pull-right">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">新增</button>
+                                <button type="button" id="add_to_last" class="btn btn-info">新增一列</button>
+                                <button type="button" id="remove_last" class="btn btn-danger">移除一列</button>
+                                <button type="submit" class="btn btn-primary">提交</button>
                             </div>
                         </div>
                     </form>                   

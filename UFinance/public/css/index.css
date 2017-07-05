@@ -21,3 +21,9 @@
     font-weight: 150;
     height: 100vh;
 }
+.panel-group .panel-heading{
+    height:80px;
+}
+.panel-group .panel-title{
+    line-height: 60px;
+}

@@ -1,6 +1,7 @@
 var types ; 
 $(document).ready(function(){
     addNewRow();
+    removeLast();
 });
 
 function getTypes(){
@@ -16,11 +17,9 @@ function getTypes(){
 function addNewRow(){
     getTypes();
     var price = 150;
-    $('.table tbody').click(function(){
-        var table = $(this);
-        var lastElement = $(table).find('tr:last-child td:last-child');
-        $(lastElement).click(function(){
-            $(table).append('\
+    $('#add_to_last').click(function(){
+        var table = $('.table tbody');
+        $(table).append('\
             <tr>\
                 <td>\
                     <input type="text" name="account[]" value=""/>\
@@ -35,9 +34,14 @@ function addNewRow(){
             ');
             price += 10;
             types.forEach(function(item){
-                $(table).find('tr:last-child select').append('<option value="'+ item['name'] + '">'+ item['name'] + '</option>' );
-            });
+            $(table).find('tr:last-child select').append('<option value="'+ item['name'] + '">'+ item['name'] + '</option>' );
         });
+    });
+}
 
-    });   
+function removeLast(){
+    $("#remove_last").click(function(){
+        var lastElement = $('.table tbody tr:last-child');
+        $(lastElement).remove();
+    });
 }
