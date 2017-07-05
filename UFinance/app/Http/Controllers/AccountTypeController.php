@@ -18,6 +18,14 @@ class AccountTypeController extends Controller
         ]);
         $accountType->save();
         Log::info('add ' . $request->input('typeName') . ' type success' );
-        return redirect('/home');
+        return redirect('/type');
+    }
+
+    public function getTypes(){
+        $accountTypes = AccountType::distinct()
+                        ->select('name')
+                        ->orderBy('created_at','desc')
+                        ->get();
+        return $accountTypes;
     }
 }

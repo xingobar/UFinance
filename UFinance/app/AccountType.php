@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\AccountType;
 
 class AccountType extends Model
 {
@@ -14,4 +15,5 @@ class AccountType extends Model
     public function account(){
         return $this->hasMany(Account::class,'account_type_id','id');
     }
+    
 }

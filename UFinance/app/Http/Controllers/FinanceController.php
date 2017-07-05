@@ -8,6 +8,7 @@ use App\Account;
 use App\AccountType;
 use App\Finance;
 use App\Transaction;
+use App\Http\Controllers\AccountTypeController;
 use Auth;
 
 class FinanceController extends Controller
@@ -17,7 +18,11 @@ class FinanceController extends Controller
     }
     
     public function showTransaction(){
-        return view('transaction.show');
+        $accountType = new AccountTypeController();
+        $types = $accountType->getTypes();
+        return view('transaction.show',[
+            'types'=>$types
+        ]);
     }
 
     public function create(Request $request){
@@ -46,6 +51,7 @@ class FinanceController extends Controller
             ]);
             $finance->save();
         }
+        Log::info('create account detail success');
         return redirect('/home');
     }
 }

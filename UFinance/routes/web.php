@@ -22,6 +22,7 @@ Route::post('/addTransaction','FinanceController@create');
 // 交易類型
 Route::get('/type','AccountTypeController@show');
 Route::post('/addAccountType','AccountTypeController@create');
+Route::get('/getTypes','AccountTypeController@getTypes');
 
 Auth::routes();
 

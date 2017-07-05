@@ -26,13 +26,14 @@
                             <tbody>
                                 <tr>
                                     <td><input type="text" name="account[]" value="hehe"></td>
-                                    <td><input type="text" name="type[]" value="ehhehe"></td>
+                                    <td>
+                                        <select class="form-control" name="type[]">
+                                            @foreach($types as $type)
+                                                <option value="{{$type->name}}">{{$type->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
                                     <td><input type="number" name="amount[]" value="100"></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="text" name="account[]" value="a"></td>
-                                    <td><input type="text" name="type[]" value="b"></td>
-                                    <td><input type="number" name="amount[]" value="120"></td>
                                 </tr>
                             </tbody>
                         </table>

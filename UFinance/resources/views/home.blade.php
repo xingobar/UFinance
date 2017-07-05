@@ -9,6 +9,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @if(count($transactions) > 0)
             @foreach($transactions as $transaction)
             <div class="panel-group">
                 <div class="panel panel-default">
@@ -44,10 +45,13 @@
                 </div>
             </div>
             @endforeach
+            @else
+                <p class="flex-center title">Not Record</p>
+            @endif
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 text-center">
             {{$transactions->render()}}
         </div>
     </div>
