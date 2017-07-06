@@ -8,6 +8,10 @@ use Log;
 
 class AccountTypeController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function show(){
         return view('accounttype.show');
     }

@@ -44,7 +44,7 @@
         bottom:30,
         left:40
     },
-    width = 650 - margin.left - margin.right;
+    width = 900 - margin.left - margin.right;
     height = 500 - margin.top - margin.bottom;
 
     var x = d3.scale.ordinal() // 序數比例尺

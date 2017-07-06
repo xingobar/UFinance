@@ -37,7 +37,7 @@ class HomeController extends Controller
                         ->join('finance','transaction.id','=','finance.transaction_id')
                         ->join('account','finance.account_id','=','account.id')
                         ->join('account_type','account.account_type_id','=','account_type.id')
-                        ->paginate(5);
+                        ->get();
         $transactions = Transaction::
                         where('user_id',Auth::user()->id)
                         ->orderBy('created_at','desc')->paginate(5);
