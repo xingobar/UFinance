@@ -15,7 +15,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a href="#collapse{{$transaction->id}}" data-toggle="collapse">交易紀錄 {{$transaction->created_at->toDateString()}}</a>
+                            <a href="#collapse{{$transaction->id}}" data-toggle="collapse">收支紀錄 {{$transaction->created_at->toDateString()}}</a>
                         </h4>
                     </div>
                     <div id="collapse{{$transaction->id}}" class="panel-collapse collapse">

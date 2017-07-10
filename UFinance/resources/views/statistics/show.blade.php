@@ -4,6 +4,8 @@
 <!--<script src="https://d3js.org/d3.v4.min.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
 <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script src="{{asset('js/c3.min.js')}}"></script>
+<link rel="stylesheet" href="{{asset('css/c3.min.css')}}">
 <style>
 .bar {
   fill: steelblue;
@@ -29,15 +31,55 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2" style="display:flex;align-item:center;justify-content:center">
             <div id="data">
                 
             </div>
         </div>
     </div>
 </div>
-
 <script>
+    $(function(){
+        var allData ;
+        var types = {};
+        var xColumn = ['x'];
+        $.ajax({
+            url:'/getAllData',
+            async:false,
+            success:function(data){
+                allData = data;
+            }
+        });
+        var arr={};
+        allData.map(function(data){
+            if(arr[data.name]){
+                var amount = arr[data.name];
+                amount += data.amount;
+                arr[data.name] = amount;
+            }else{
+                arr[data.name] = data.amount;
+            }
+        });
+        var result = Object.keys(arr).map(function(key){
+            return[key,arr[key]];
+        });
+        var chart = c3.generate({
+            bindto:'#data',
+            size:{
+                height:500,
+                width:500
+            },
+            data: {
+                columns: result,
+                type : 'pie',
+                onclick: function (d, i) { console.log("onclick", d, i); },
+                onmouseover: function (d, i) { console.log("onmouseover", d, i); },
+                onmouseout: function (d, i) { console.log("onmouseout", d, i); }
+            }
+        });
+    });
+</script>
+<!--<script>
     var margin={
         top:20,
         right:20,
@@ -48,9 +90,9 @@
     height = 500 - margin.top - margin.bottom;
 
     var x = d3.scale.ordinal() // 序數比例尺
-            .rangeRoundBands([0,width,.1]);
+            .rangeRoundBands([0,width,.1]); // 取整數
     var y = d3.scale.linear()
-            .range([height,0]);
+            .range([height,0]); // 上下顛倒，因為 svg座標系統會往下，值越大
     var xAxis = d3.svg.axis()
                 .scale(x)
                 .orient('bottom');
@@ -108,5 +150,5 @@
         .attr('height',function(d){
             return height - y(d.amount);
         });
-</script>
+</script>-->
 @endsection
