@@ -3,12 +3,18 @@
 @section('static')
 <link rel="stylesheet" href="{{asset('css/index.css')}}">
 <script type="text/javascript" src="{{asset('js/index.js')}}"></script>
+<style>
+ .panel-body button{
+     width:100px;
+     height:40px;
+ }
+</style>
 @endsection
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
             @if(count($transactions) > 0)
             @foreach($transactions as $transaction)
             <div class="panel-group">
@@ -40,6 +46,12 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="row text-right">
+                                <div class="col-md-12 pull-right">
+                                    <button type="submit" class="btn btn-success">編輯</button>
+                                    <button type="button" class="btn btn-danger">刪除</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -48,6 +60,17 @@
             @else
                 <p class="flex-center title">Not Record</p>
             @endif
+        </div>
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item" style="font-size:1.2em;background-color:rgb(241, 99, 99);color:#ececec">交易性質 / 種類</li>
+                @foreach($types as $type)
+                    <a class="list-group-item">{{$type->name}}</a>
+                @endforeach
+                @if(Auth::check())
+                    <a href="/type" class="list-group-item">新增交易種類</a>
+                @endif
+            </ul>
         </div>
     </div>
     <div class="row">

@@ -13,6 +13,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+    .navbar .container .nav li a{
+        line-height:2.5 !important;
+    }
+    </style>
     @yield('static')
 </head>
 <body>
@@ -30,7 +35,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
+                    <a class="navbar-brand" href="{{ url('/home') }}" style="padding-top:20px;">
                         {{ config('app.name', 'UFinance') }}
                     </a>
 

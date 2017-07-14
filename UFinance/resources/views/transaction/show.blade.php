@@ -25,7 +25,7 @@
                                 </thead>
                             <tbody>
                                 <tr>
-                                    <td><input type="text" name="account[]" value="hehe"></td>
+                                    <td><input type="text" name="account[]" value="hehe" class="form-control"></td>
                                     <td>
                                         <select class="form-control" name="type[]">
                                             @foreach($types as $type)
@@ -33,7 +33,7 @@
                                             @endforeach
                                         </select>
                                     </td>
-                                    <td><input type="number" name="amount[]" value="100"></td>
+                                    <td><input type="number" name="amount[]" value="100" class="form-control"></td>
                                 </tr>
                             </tbody>
                         </table>

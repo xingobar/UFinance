@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Log;
 use Auth;
 use App\Transaction;
+use App\Http\Controllers\AccountTypeController;
 
 class HomeController extends Controller
 {
@@ -41,9 +42,14 @@ class HomeController extends Controller
         $transactions = Transaction::
                         where('user_id',Auth::user()->id)
                         ->orderBy('created_at','desc')->paginate(5);
+
+        $accountType = new AccountTypeController();
+        $types = $accountType->getTypes();
+
         return view('home',[
             'transactions'=>$transactions,
-            'accounts' => $accountTransactions
+            'accounts' => $accountTransactions,
+            'types' => $types
         ]);
     }
 }

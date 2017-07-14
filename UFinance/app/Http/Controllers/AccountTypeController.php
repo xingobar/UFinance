@@ -32,11 +32,4 @@ class AccountTypeController extends Controller
                         ->get();
         return $accountTypes;
     }
-
-    public function showAllTypes(){
-        $types = $this->getTypes();
-        return view('accounttype.showall',[
-            'types'=>$types
-        ]);
-    }
 }

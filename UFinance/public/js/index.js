@@ -22,13 +22,13 @@ function addNewRow(){
         $(table).append('\
             <tr>\
                 <td>\
-                    <input type="text" name="account[]" value=""/>\
+                    <input class="form-control" type="text" name="account[]" value=""/>\
                 </td>\
                 <td>\
                     <select class="form-control" name="type[]"></select>\
                 </td>\
                 <td>\
-                    <input type="number" name="amount[]" value="'+ price +'"/>\
+                    <input class="form-control" type="number" name="amount[]" value="'+ price +'"/>\
                 </td>\
             </tr>\
             ');
