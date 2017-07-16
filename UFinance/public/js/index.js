@@ -2,6 +2,8 @@ var types ;
 $(document).ready(function(){
     addNewRow();
     removeLast();
+    addTokenHeader();
+    deleteTransaction();
 });
 
 function getTypes(){
@@ -43,5 +45,43 @@ function removeLast(){
     $("#remove_last").click(function(){
         var lastElement = $('.table tbody tr:last-child');
         $(lastElement).remove();
+    });
+}
+
+function addTokenHeader(){
+    $.ajaxSetup({
+       headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+}
+
+function deleteTransaction(){
+    $('.delete-transaction').click(function(){
+        var transaction_id = $(this).siblings('input.transaction-id').val();
+        swal({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function () {
+            $.ajax({
+                url:'/deleteTransaction',
+                method:'delete',
+                data:{
+                    transaction_id : transaction_id
+                },
+                success:function(data){
+                    swal(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            });
+        });
     });
 }

@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // 交易紀錄
 Route::get('/transaction','FinanceController@showTransaction');
@@ -23,6 +23,7 @@ Route::post('/addTransaction','FinanceController@create');
 Route::get('/type','AccountTypeController@show');
 Route::post('/addAccountType','AccountTypeController@create');
 Route::get('/getTypes','AccountTypeController@getTypes');
+Route::delete('/deleteTransaction','FinanceController@deleteTransaction');
 
 // 統計
 Route::get('/statistics','StatisticsController@show');
@@ -31,3 +32,4 @@ Route::get('/getAllData','StatisticsController@getAllData');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/','HomeController@index');

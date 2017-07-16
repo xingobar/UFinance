@@ -54,4 +54,25 @@ class FinanceController extends Controller
         Log::info('create account detail success');
         return redirect('/home');
     }
+
+    public function deleteTransaction(Request $request){
+        $transaction_id = $request->input('transaction_id');
+        $transaction = Transaction::where('id',$transaction_id)->first();
+        $finances  = $transaction->finance()->get();
+        foreach($finances as $finance){
+            $account = $finance->account()->first();
+            Log::info('deleteing account id' . $account->id . ' and finance id ' . $finance->id );
+            $account->delete();
+            $finance->delete();
+            Log::info('account & finance delete success');
+        }
+        $transaction->delete();
+        Log::info($transaction_id . ' delete success');
+    }
+
+    public function update(Request $request){
+        $transaction_id = $request->input('transaction_id');
+
+        Log::info($transaction_id . ' update success' );
+    }
 }

@@ -48,8 +48,9 @@
                             </table>
                             <div class="row text-right">
                                 <div class="col-md-12 pull-right">
-                                    <button type="submit" class="btn btn-success">編輯</button>
-                                    <button type="button" class="btn btn-danger">刪除</button>
+                                    <input type="hidden" class="transaction-id" name="transaction_id" value="{{$transaction->id}}">
+                                    <button type="submit" class="btn btn-success modify-transaction">編輯</button>
+                                    <button type="button" class="btn btn-danger delete-transaction">刪除</button>
                                 </div>
                             </div>
                         </div>
