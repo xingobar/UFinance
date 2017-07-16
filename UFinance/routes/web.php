@@ -24,6 +24,7 @@ Route::get('/type','AccountTypeController@show');
 Route::post('/addAccountType','AccountTypeController@create');
 Route::get('/getTypes','AccountTypeController@getTypes');
 Route::delete('/deleteTransaction','FinanceController@deleteTransaction');
+Route::put('/update','FinanceController@update');
 
 // 統計
 Route::get('/statistics','StatisticsController@show');

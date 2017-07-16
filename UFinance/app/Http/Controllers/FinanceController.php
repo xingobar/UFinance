@@ -67,12 +67,27 @@ class FinanceController extends Controller
             Log::info('account & finance delete success');
         }
         $transaction->delete();
-        Log::info($transaction_id . ' delete success');
+        Log::info('transaction id is ' . $transaction_id . ' delete success');
     }
 
     public function update(Request $request){
         $transaction_id = $request->input('transaction_id');
-
-        Log::info($transaction_id . ' update success' );
+        $transaction = Transaction::where('id',$transaction_id)->first();
+        $finances = $transaction->finance()->get();
+        $accounts = $request->input('account');
+        $amounts = $request->input('amount');
+        $types = $request->input('type');
+        for($index = 0 ; $index < count($finances) ; $index++){
+            $account = $finances[$index]->account()->first();
+            $account->name = $accounts[$index];
+            $account->amount = $amounts[$index];
+            $accountType = AccountType::where('id',$account->account_type_id)->first();
+            $accountType->name = $types[$index];
+            $accountType->save();
+            $account->save();
+            Log::info('account type and account update success');
+        }
+        Log::info('Transaction id ' . $transaction_id . ' update success' );
+        return redirect()->back();
     }
 }
