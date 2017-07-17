@@ -11,20 +11,18 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // 交易紀錄
 Route::get('/transaction','FinanceController@showTransaction');
 Route::post('/addTransaction','FinanceController@create');
+Route::delete('/deleteTransaction','FinanceController@deleteTransaction');
+Route::put('/update','FinanceController@update');
 
 // 交易類型
 Route::get('/type','AccountTypeController@show');
 Route::post('/addAccountType','AccountTypeController@create');
 Route::get('/getTypes','AccountTypeController@getTypes');
-Route::delete('/deleteTransaction','FinanceController@deleteTransaction');
-Route::put('/update','FinanceController@update');
+Route::delete('/deleteType','AccountTypeController@deleteTypes');
 
 // 統計
 Route::get('/statistics','StatisticsController@show');

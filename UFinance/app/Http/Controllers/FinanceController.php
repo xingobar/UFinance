@@ -36,15 +36,13 @@ class FinanceController extends Controller
             if(empty($types[$index]) || empty($accounts[$index]) || empty($amounts[$index])){
                 continue;
             }
-            $type = new AccountType([
-                'name' => $types[$index]
-            ]);
+            $type = AccountType::where('name',$types[$index])->first();
             $account = new Account([
                 'name' => $accounts[$index],
                 'amount' => $amounts[$index]
             ]);
-            $type->save();
-            $type->account()->save($account);
+            $account->account_type_id = $type->id;
+            $account->save();
             $finance = new Finance([
                 'transaction_id'=>$transaction->id,
                 'account_id' => $account->id
@@ -81,9 +79,8 @@ class FinanceController extends Controller
             $account = $finances[$index]->account()->first();
             $account->name = $accounts[$index];
             $account->amount = $amounts[$index];
-            $accountType = AccountType::where('id',$account->account_type_id)->first();
-            $accountType->name = $types[$index];
-            $accountType->save();
+            $account_type = AccountType::where('name',$types[$index])->first();
+            $account->account_type_id = $account_type->id;
             $account->save();
             Log::info('account type and account update success');
         }

@@ -27,3 +27,15 @@
 .panel-group .panel-title{
     line-height: 60px;
 }
+.panel-group .panel a{
+    text-decoration: none;
+    color:#7b6c6c;
+    font-weight: 300;
+    display: block;
+    background-color:#9ed1ef;
+    transition: all 0.2s ease-in;
+}
+.panel-group .panel a:hover{
+    background-color:rgba(35, 155, 226, 0.73);
+    color:white;
+}

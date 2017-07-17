@@ -19,11 +19,13 @@
             @foreach($transactions as $transaction)
             <div class="panel-group">
                 <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a href="#collapse{{$transaction->id}}" data-toggle="collapse">收支紀錄 {{$transaction->created_at->toDateString()}}</a>
-                        </h4>
-                    </div>
+                    <a href="#collapse{{$transaction->id}}" data-toggle="collapse" >
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                收支紀錄 {{$transaction->created_at->toDateString()}}
+                            </h4>
+                        </div>
+                    </a>
                     <div id="collapse{{$transaction->id}}" class="panel-collapse collapse">
                         <div class="panel-body">
                             <table class="table table-striped">
@@ -49,8 +51,8 @@
                             <div class="row text-right">
                                 <div class="col-md-12 pull-right">
                                     <input type="hidden" class="transaction-id" name="transaction_id" value="{{$transaction->id}}">
-                                    <button type="submit" class="btn btn-success modify-transaction" data-toggle="modal" data-target="#transaction{{$transaction->id}}"><span class="glyphicon glyphicon-pencil"></span> 編輯</button>
-                                    <button type="button" class="btn btn-danger delete-transaction">刪除</button>
+                                    <button type="submit" class="btn btn-success modify-transaction" data-toggle="modal" data-target="#transaction{{$transaction->id}}"><i class="fa fa-pencil" aria-hidden="true"></i> 編輯</button>
+                                    <button type="button" class="btn btn-danger delete-transaction"><i class="fa fa-trash" aria-hidden="true"></i> 刪除</button>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +116,14 @@
             <ul class="list-group">
                 <li class="list-group-item" style="font-size:1.2em;background-color:rgb(241, 99, 99);color:#ececec">交易性質 / 種類</li>
                 @foreach($types as $type)
-                    <a class="list-group-item">{{$type->name}}</a>
+                    <a class="list-group-item clearfix">
+                        {{$type->name}}
+                        <span class="pull-right">
+                            <button type="button" class="btn btn-xs btn-danger type-delete" id="{{$type->id}}">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                    </a>
                 @endforeach
                 @if(Auth::check())
                     <a href="/type" class="list-group-item">新增交易種類</a>
